@@ -30,7 +30,8 @@ enum combos
   PAREN_OPEN,
   PAREN_CLOSE,
   CARET,
-  DOLLARD
+  DOLLARD,
+  BACK_TICK
 };
 
 const uint16_t PROGMEM ze_combo[] = { KC_W, MY_E, COMBO_END };
@@ -43,6 +44,7 @@ const uint16_t PROGMEM df_combo[] = { MY_D, MY_F, COMBO_END };
 const uint16_t PROGMEM jk_combo[] = { MY_J, MY_K, COMBO_END };
 const uint16_t PROGMEM fg_combo[] = { MY_F, KC_G, COMBO_END };
 const uint16_t PROGMEM hj_combo[] = { KC_H, MY_J, COMBO_END };
+const uint16_t PROGMEM lm_combo[] = { MY_L, MY_M, COMBO_END };
 
 combo_t key_combos[] = {
   [CURLY_OPEN]    = COMBO(sd_combo, BE_LCBR),
@@ -54,20 +56,21 @@ combo_t key_combos[] = {
   [PAREN_OPEN]    = COMBO(df_combo, BE_LPRN),
   [PAREN_CLOSE]   = COMBO(jk_combo, BE_RPRN),
   [CARET]         = COMBO(fg_combo, BE_DCIR),
-  [DOLLARD]       = COMBO(hj_combo, BE_DLR)
+  [DOLLARD]       = COMBO(hj_combo, BE_DLR),
+  [BACK_TICK]     = COMBO(lm_combo, BE_GRV)
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* QWERTY
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * |      |   &  |   é  |   "  |   '  |   (  |                    |   §  |   è  |   !  |   ç  |   à  |      |
+ * |      |   &  |   é  |   "  |   '  |      |                    |      |   è  |   !  |   ç  |   à  |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |   Q  |   W  [   E  <   R  |   T  |                    |   Y  |   U  >   I  ]   O  |   P  |      |
+ * |      |   A  |   Z  [   E  <   R  |   T  |                    |   Y  |   U  >   I  ]   O  |   P  |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |   A  |   S  {   D  (   F  ^   G  |-------.    ,-------|   H  $   J  )   K  }   L  |   ;  |  ù   |
+ * |      |   Q  |   S  {   D  (   F  ^   G  |-------.    ,-------|   H  $   J  )   K  }   L  `   M  |  ù   |
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
- * |      |   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   N  |   M  |   ,  |   .  |   /  |      |
+ * |      |   W  |   X  |   C  |   V  |   B  |-------|    |-------|   N  |   ,  |   ;  |   :  |   =  |      |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *                   |      | Tab  | ESC  | /Space  /       \Enter \  |BackSP| DEL  |      |
  *                   |      |      |      |/       /         \      \ |      |      |      |
@@ -144,8 +147,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_ADJUST] = LAYOUT(
   KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                     KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-  KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                     KC_NO, KC_WH_D, KC_WH_U, KC_NO, KC_NO, KC_NO,
-  KC_NO, KC_NO, KC_NO, KC_BTN2, KC_BTN1, KC_BTN3,               KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_NO, KC_NO,
+  KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                     KC_NO, MS_WHLD, MS_WHLU, KC_NO, KC_NO, KC_NO,
+  KC_NO, KC_NO, KC_NO, MS_BTN2, MS_BTN1, MS_BTN3,               MS_LEFT, MS_DOWN, MS_UP, MS_RGHT, KC_NO, KC_NO,
   KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,          KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
     KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
   ),
